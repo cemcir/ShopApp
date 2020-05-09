@@ -1,0 +1,34 @@
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("CategoryList")
+    </div>
+    <div class="col-md-9">
+
+        <div class="row">
+
+            @if (Model.Products == null)
+            {
+                <div class="col-md-12">
+                    <div class="alert alert-warning">
+                        <h4>Ürün Bulunamadı</h4>
+                    </div>
+                </div>
+            }
+            else {
+                @foreach (var product in Model.Products)
+                {
+                    <partial name="_product" for="@product" />
+                }
+            }
+        </div>
+        @if (Model.Products != null) {
+            <div page-model="@Model.PageInfo"></div>
+        }
+    </div>
+</div>
+

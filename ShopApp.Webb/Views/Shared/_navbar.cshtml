@@ -1,0 +1,77 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Alışveriş</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                   Ana Sayfa
+                </a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="Shop" asp-action="List" class="nav-link">
+                    Ürünler
+                </a>
+            </li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Kart</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Siparişler</a>
+                </li>
+                if (User.IsInRole("admin"))
+                {
+                    <li class="nav-item">
+                        <a asp-controller="Admin" asp-action="CreateProduct" class="nav-link">
+                            Ürün Ekle
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Admin" asp-action="ProductList" class="nav-link">
+                            Yönetici Ürünleri
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Admin" asp-action="CreateCategory" class="nav-link">
+                            Kategori Ekle
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Admin" asp-action="CategoryList" class="nav-link">
+                            Yönetici Kategorileri
+                        </a>
+                    </li>
+                }
+            }
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+
+            @if (User.Identity.IsAuthenticated) {
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Manage" class="nav-link">
+                        @User.Identity.Name
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Logout" class="nav-link">
+                        Çıkış Yap
+                    </a>
+                </li>
+            }
+            else {
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Login" class="nav-link">
+                        Giriş
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Register" class="nav-link">
+                        Kayıt Ol
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

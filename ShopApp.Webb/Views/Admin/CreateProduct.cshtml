@@ -1,0 +1,59 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}
+<h1>Ürün Oluştur</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        @if (ViewBag.ErrorMessage != null) {
+            <span class="text-danger">@ViewBag.ErrorMessage</span>
+        }
+        <form asp-controller="Admin" asp-action="CreateProduct" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="Name" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Name" value="@(Model.Name)" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ImgeUrl" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ImgeUrl" value="@(Model.ImgeUrl)" class="form-control" />
+                    <span asp-validation-for="ImgeUrl" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Description" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <textarea id="editor" asp-for="Description" class="form-control">
+                        @Model.Description
+                    </textarea>
+                    <span asp-validation-for="Description" class="text-danger">
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Price" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Price" value="@(Model.Price)" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" value="Save Product" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
