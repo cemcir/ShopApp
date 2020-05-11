@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ShopApp.Business.Abstract;
 using ShopApp.Webb.EmailServices;
 using ShopApp.Webb.Extensions;
 using ShopApp.Webb.Identity;
@@ -16,10 +17,12 @@ namespace ShopApp.Webb.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private ICartService _cartService;
 
-        public AccountController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager) {
+        public AccountController(ICartService cartService,UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager) {
             _userManager = userManager;
             _signInManager = signInManager;
+            _cartService = cartService;
         }
 
         public IActionResult Register()
@@ -43,6 +46,10 @@ namespace ShopApp.Webb.Controllers
             var result = await _userManager.CreateAsync(user,model.Password);
 
             if (result.Succeeded) {
+
+                //create cart object
+                _cartService.InitializeCart(user.Id);
+
                 // generate token
                 /*
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
