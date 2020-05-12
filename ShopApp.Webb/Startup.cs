@@ -125,7 +125,13 @@ namespace ShopApp.Webb
                     template: "admin/products/{id?}",
                     defaults: new { controller = "Admin", action = "EditProduct" }
                 );
-                
+
+                routes.MapRoute(
+                    name:"cart",
+                    template:"cart",
+                    defaults:new {controller="cart" ,action="index"}
+                );
+
                 routes.MapRoute(
                     name:"products",
                     template:"products/{category?}",
