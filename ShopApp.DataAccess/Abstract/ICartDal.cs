@@ -7,5 +7,6 @@ namespace ShopApp.DataAccess.Abstract
 {
     public interface ICartDal:IRepository<Cart>
     {
+        Cart GetByUserId(string userId);
     }
 }
