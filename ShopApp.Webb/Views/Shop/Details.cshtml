@@ -20,11 +20,11 @@
                     @Model.Product.Price  TL
                 </h4>
 
-                <form asp-controller="Cart" asp-action="AddToCart" method="post">
-                    <input type="hidden" name="productId" value="@Model.Product.Id" />
+                <form asp-controller="CartItem" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="ProductId" value="@Model.Product.Id" />
                     <div>
                         <div class="form-group row">
-                            <input type="number" name="quantity" class="form-control" value="1" min="1" step="1" style="width:100px"/>
+                            <input type="number" name="Quantity" class="form-control" value="1" min="1" step="1" style="width:100px"/>
                         </div>
                         <div class="form-group row">
                             <button type="submit" class="btn btn-primary">

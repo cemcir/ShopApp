@@ -85,10 +85,12 @@ namespace ShopApp.Webb
 
             services.AddScoped<IProductDal, EfCoreProductDal>();
             services.AddScoped<ICategoryDal, EfCoreCategoryDal>();
-            services.AddScoped<ICartDal,EFCoreCartDal>();
+            services.AddScoped<ICartDal,EfCoreCartDal>();
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICartService, CartManager>();
+            services.AddScoped<ICartItemDal,EfCoreCartItemDal>();
+            services.AddScoped<ICartItemService,CartItemManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

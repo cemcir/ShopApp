@@ -3,6 +3,7 @@ using ShopApp.DataAccess.Abstract;
 using ShopApp.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ShopApp.Business.Concrete
@@ -14,6 +15,15 @@ namespace ShopApp.Business.Concrete
         public CartManager(ICartDal cartDal)
         {
             _cartDal = cartDal;  
+        }
+
+        public void AddToCart(string userId, int productId, int quantity)
+        {
+            var cart = GetCartByUserId(userId);
+            if (cart != null) {
+                var cartItem = cart.CartItems.
+                    Where(x => x.ProductId == productId).FirstOrDefault();
+            }
         }
 
         public Cart GetCartByUserId(string userId)

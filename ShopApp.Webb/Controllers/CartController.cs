@@ -39,9 +39,10 @@ namespace ShopApp.Webb.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart()
+        public IActionResult AddToCart(CartItemModel model)
         {
-            return View();
+           
+            return RedirectToAction("Index","Cart");
         }
     }
 }

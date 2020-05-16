@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ShopApp.DataAccess.Concrete.EfCore
 {
-    public class EFCoreCartDal : EfCoreGenericRepository<Cart, ShopContext>, ICartDal
+    public class EfCoreCartDal : EfCoreGenericRepository<Cart, ShopContext>, ICartDal
     {
         public Cart GetByUserId(string userId)
         {
