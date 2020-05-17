@@ -7,6 +7,11 @@
 
 <div class="row mt-5">
     <div class="col-md-8">
+        <div class="text-left">
+            <h4>
+                Kart Ögeleri
+            </h4>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -42,5 +47,35 @@
             </tr>
         </table>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="text-left">
+            <h4>Kart Özeti</h4>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td>Kart Toplamı</td>
+                        <td>@Model.TotalPrice().ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <td>Kargo</td>
+                        <td>Ücretsiz</td>
+                    </tr>
+                    <tr>
+                        <td>Sipariş Toplamı</td>
+                        <td>@Model.TotalPrice().ToString("c")</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                    <i class="fa fa-arrow-circle-left fa-fw"></i>
+                    Alışverişe DevamEt
+                </a>
+                <a class="btn btn-primary">
+                    <i class="fa fa-arrow-circle-right fa-fw"></i>
+                    Ödeme
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -12,6 +12,10 @@ namespace ShopApp.Webb.Models
 
         public List<CartItemModel> CartItems { get; set; }
 
+        public decimal TotalPrice()
+        {
+            return CartItems.Sum(i => i.Price*i.Quantity);
+        }
     }
 
     public class CartItemModel
