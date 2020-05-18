@@ -9,5 +9,7 @@ namespace ShopApp.DataAccess.Abstract
     public interface ICartItemDal : IRepository<CartItem>
     {
         CartItem GetCartItemById(int productId);
+
+        CartItem GetCartItemByItemId(int cartItemId);
     }
 }

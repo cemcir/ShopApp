@@ -26,5 +26,12 @@ namespace ShopApp.Webb.Controllers
             _cartItemService.AddToCartItem(_userManager.GetUserId(User), model.ProductId, model.Quantity);
             return RedirectToAction("Index","Cart");
         }
+
+        [HttpPost]
+        public IActionResult DeleteCartItem(int cartItemId)
+        {
+            _cartItemService.DeleteCartItem(cartItemId);
+            return RedirectToAction("Index","Cart");
+        }
     }
 }

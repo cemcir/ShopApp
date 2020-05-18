@@ -39,5 +39,13 @@ namespace ShopApp.Business.Concrete
                 }
             }
         }
+
+        public void DeleteCartItem(int cartItemId)
+        {
+            var cartItem = _cartItemDal.GetCartItemByItemId(cartItemId);
+            if (cartItem != null) {
+                _cartItemDal.Delete(cartItem);
+            }
+        }
     }
 }

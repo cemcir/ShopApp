@@ -35,9 +35,12 @@
                     <td>@item.Quantity</td>
                     <td>@((item.Quantity*item.Price).ToString("c"))</td>
                     <td>
-                        <button class="btn btn-danger btn-sm">
-                            <i class="fa fa-times fa-fw"></i>
-                        </button>
+                        <form asp-controller="CartItem" asp-action="DeleteCartItem" method="post">
+                            <input type="hidden" name="cartItemId" value="@item.CartItemId"/>
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fa fa-times fa-fw"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 }

@@ -16,5 +16,13 @@ namespace ShopApp.DataAccess.Concrete.EfCore
                 return context.CartItems.Where(x => x.ProductId == productId).FirstOrDefault();
             }
         }
+
+        public CartItem GetCartItemByItemId(int cartItemId)
+        {
+            using (var context=new ShopContext())
+            {
+                return context.CartItems.Where(x => x.Id == cartItemId).FirstOrDefault();
+            }
+        }
     }
 }
