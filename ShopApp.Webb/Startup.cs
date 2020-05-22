@@ -123,6 +123,12 @@ namespace ShopApp.Webb
                 );
 
                 routes.MapRoute(
+                    name:"checkout",
+                    template:"checkout",
+                    defaults: new { controller="Cart",action="CheckOut"}
+                );
+
+                routes.MapRoute(
                     name: "adminProduct",
                     template: "admin/products/{id?}",
                     defaults: new { controller = "Admin", action = "EditProduct" }
